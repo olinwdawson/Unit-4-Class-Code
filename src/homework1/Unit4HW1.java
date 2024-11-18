@@ -1,5 +1,6 @@
 package homework1;
-
+import java.util.Random;
+import java.util.Scanner;
 public class Unit4HW1 {
 
     public static void main(String[] args) {
@@ -21,7 +22,24 @@ public class Unit4HW1 {
      */
     public static void guessingGame(){
         //feel free to use the Random class
-        System.out.println("To be done...");
+        Random rand = new Random();
+        Scanner scan = new Scanner(System.in);
+        int randInt = rand.nextInt(0,101);
+        int guess=0;
+        int tries =0;
+        System.out.println(randInt);
+        while(randInt!=guess) {
+            System.out.print("Guess the number: ");
+            guess = scan.nextInt();
+            if(randInt<guess) {
+                System.out.println("Too high! Try again.");
+            } else if(randInt>guess) {
+                System.out.println("Too low! Try again.");
+            }
+            tries++;
+        }
+        System.out.println("Congrats! It took you "+tries+" tries.");
+
     }
 
     /**
@@ -32,7 +50,17 @@ public class Unit4HW1 {
      *
      */
     public static void tiredTurtle(){
-        System.out.println("To be done...");
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Initial Turtle Steps: ");
+        int steps = scan.nextInt();
+        int count = 0;
+        while(steps>0){
+            steps/=2;
+            count++;
+            System.out.print(steps+" ");
+        }
+        System.out.println("\nTotal Steps: "+count);
+
     }
 
 
@@ -41,7 +69,6 @@ public class Unit4HW1 {
      * Write your own description
      */
     public static void notATamagotchi(){
-        System.out.println("To be done...");
     }
 
 }
