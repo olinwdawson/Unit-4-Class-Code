@@ -1,4 +1,5 @@
 package homework1;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 public class Unit4HW1 {
@@ -69,6 +70,43 @@ public class Unit4HW1 {
      * Write your own description
      */
     public static void notATamagotchi(){
+        int hunger = 100;
+        Scanner scan = new Scanner(System.in);
+        int hours = 0;
+        boolean happy = true;
+        boolean fed = false;
+        while(true){
+            hours++;
+
+            System.out.print("Hour "+hours+", Hunger Level: "+(hunger)+". Do you want to feed your tamagotchi? (Y / N)\n");
+            String answer = scan.nextLine();
+            if(answer.compareToIgnoreCase("N")==0) {
+                fed = false;
+            } else if(answer.compareToIgnoreCase("Y")==0) {
+                fed = true;
+                if(hunger>=75){
+                    hunger+=(110-hunger);
+                } else {
+                    hunger+=25;
+                }
+            }
+            if(hunger<=40) {
+                System.out.println("Your pet is unhappy.");
+                happy = false;
+            } else if (hunger>40){
+                happy = true;
+            }
+            hunger-=10;
+            if(happy==false&&fed==false||hours>=10){
+                System.out.print("Simulation Over -");
+                if(happy==false&&fed==false){
+                    System.out.println(" Why didn't you feed your tamagotchi?");
+                } else{
+                    System.out.println("Time is Up!");
+                }
+                break;
+            }
+        }
     }
 
 }
